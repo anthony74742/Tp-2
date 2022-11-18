@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>SpamTheButton</title>
+</head>
+<body>
+    <div id="player">
+        <div id="player1">
+            <div class="player_name">
+                <p>Player 1 : <span>0</span></p>
+            </div>
+            <div class="jauge_max">
+                <div id="jauge1"></div>
+                <img src="RedCar.png" alt="" class="img" id="Player1_Car">
+                <div class="arri"></div>
+            </div>
+        </div>
+        <div id="player2">
+            <div class="player_name">
+                <p>Player 2 : <span>0</span></p>
+            </div>
+            <div class="jauge_max">
+                <div id="jauge2"></div>
+                <img src="BlueCar.png" alt="" class="img" id="Player2_Car">
+                <div class="arri"></div>
+            </div>
+        </div>
+    </div>
+    <section id="finish">
+        <p id="winner">Le <span></span> a gagné</p>
+        <button id="btn" onclick="reset()">Rejouer</button>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>

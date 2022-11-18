@@ -1,0 +1,113 @@
+*{
+    margin: 0px;
+}
+
+#player{
+    width: 100vw;
+    height: 100vh;
+    background-color: #737578;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+#player1{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#player2{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.player_name{
+    font-size: 3rem;
+    color: white;
+    width: 15%;
+    height: 100%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid red;
+    border-radius: 20px;
+}
+
+.player_name p{
+    margin: auto;
+}
+
+.jauge_max{
+    display: flex;
+    flex-direction: row;
+    z-index: 3;
+    height: 100%;
+    width: 80%;
+    background-image: url(Road.png);
+    background-size: contain;
+    background-position: left;
+    align-items: center;
+}
+
+#jauge1{
+    height: 50%;
+    width: 0vw;
+    background-color: green;
+    filter: opacity(0.3);
+}
+
+#jauge2{
+    height: 50%;
+    width: 0vw;
+    background-color: green;
+    filter: opacity(0.3);
+}
+
+.arri{
+    position: absolute;
+    height: 10vh;
+    width: 10vh;
+    background-image:url(F1_chequered_flag.svg.png) ;
+    background-size: cover;
+    z-index: 0;
+    right: 0px;
+}
+
+.img{
+    z-index: 1;
+    width: fit-content;
+    height: 80%;
+}
+
+#finish{
+    z-index: 15;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    /*display: none;*/
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60vh;
+}
+
+#finish p{
+    font-size: 50px;
+}
+
+#btn{
+    border-radius: 20px;
+    font-size: 40px;
+}
