@@ -1,26 +1,25 @@
-"use strict"
-
 const Player1_Car = document.getElementById('jauge1')
 const Player2_Car = document.getElementById('jauge2')
 const Player1_Score = document.querySelector('#player1 p span')
 const Player2_Score = document.querySelector('#player2 p span')
 const PLayer_Winner = document.querySelector('#winner span')
 const Overlay = document.getElementById('finish')
-let myInterval;
+let T1;
+let T2;
+let TimeoutP1;
+let TimeoutP2;
 
 
 let Player1_Count = 0
 let Player2_Count = 0
-let Player1_width = 0
-let Player2_width = 0
 
 let winner = ""
 
 const finish = () =>{
-    if (Player1_width === 100){
+    if (Player1_Count === 100){
         winner = "Player1"
         return true
-    } else if (Player2_width === 100){
+    } else if (Player2_Count === 100){
         winner = "Player2"
         return true
     } else {
@@ -28,33 +27,28 @@ const finish = () =>{
     }
 }
 
-
-
 document.addEventListener(('keydown'), (e) => {
     if (!finish()){
-        StopInterval()
-        let car = WhichCar(e)
+        car = WhichCar(e)
         console.log(car)
         move(car)
         if (finish()){
-            if (Player1_width === 100 || Player2_width === 100) {
+            if (Player1_Count === 100 || Player2_Count === 100) {
                 PLayer_Winner.innerHTML = `${winner}`
                 Overlay.style.display = "flex"
-                StopInterval()
             }
+        }
+        if(car === "Player1"){
+            clearTimeout(TimeoutP1)
+            clearTimeout(T1)
+            T1 = setTimeout(() => back_P1(), 2000)
+        }else if(car === "Player2"){
+            clearTimeout(TimeoutP2)
+            clearTimeout(T2)
+            T2 = setTimeout(() => back_P2(), 2000)
         }
     }
 })
-document.addEventListener(('keyup'), (e) => {
-    if (!finish()){
-        let car = WhichCar(e)
-        Interval(car)
-    } else {
-        StopInterval()
-    }
-
-})
-
 
 const WhichCar = (e) =>{
     if(e.key === 's'){
@@ -69,18 +63,16 @@ const move = (car) =>{
     if (car === "Player1"){
         console.log('P1')
         Player1_Count += 1
-        Player1_width += 1
         console.log(Player1_Count)
-        Player1_Car.style.backgroundColor = `${ChangeColor(Player1_width)}`
-        Player1_Car.style.width = `${Player1_width*0.75}vw`
-        Player1_Score.innerHTML = `${Player1_width}`
+        Player1_Car.style.backgroundColor = `${ChangeColor(Player1_Count)}`
+        Player1_Car.style.width = `${Player1_Count*0.73}vw`
+        Player1_Score.innerHTML = `${Player1_Count}`
     } else if (car === "Player2"){
         Player2_Count += 1
-        Player2_width += 1
         console.log(Player2_Count)
-        Player2_Car.style.backgroundColor = `${ChangeColor(Player2_width)}`
-        Player2_Car.style.width = `${Player2_width*0.75}vw`
-        Player2_Score.innerHTML = `${Player2_width}`
+        Player2_Car.style.backgroundColor = `${ChangeColor(Player2_Count)}`
+        Player2_Car.style.width = `${Player2_Count*0.73}vw`
+        Player2_Score.innerHTML = `${Player2_Count}`
     }
 }
 
@@ -96,34 +88,10 @@ const ChangeColor = (count) => {
     }
 }
 
-
-
-const go_back_to_the_hell = (a) =>{
-    if (Player1_width >= 2 && key.code){
-        Player1_width -= 2
-        Player1_Car.style.width = `${Player1_width*0.75}vw`
-        Player1_Score.innerHTML = `${Player1_width}`
-    }
-    if (Player2_width >= 2){
-        Player2_width -= 2
-        Player2_Car.style.width = `${Player2_width*0.75}vw`
-        Player2_Score.innerHTML = `${Player2_width}`
-    }
-
-}
-
-const Interval = (a) =>{ 
-   myInterval = setInterval(go_back_to_the_hell(a), 200)
-}
-
-const StopInterval = () => {
-    clearInterval(myInterval)
-}
-
 const reset = () =>{
     winner = ""
-    Player1_width = 0
-    Player2_width = 0
+    Player1_Count = 0
+    Player2_Count = 0
     Player1_Car.style.backgroundColor = "green"
     Player2_Car.style.backgroundColor = "green"
     Player1_Car.style.width = "0vw"
@@ -133,3 +101,28 @@ const reset = () =>{
     Overlay.style.display = "none"
 }
 
+
+
+
+
+const back_P1= () => {
+        TimeoutP1 = setTimeout(() => {
+            if (Player2_Count > 0){
+            Player1_Count -= 1
+            Player1_Car.style.width = `${Player1_Count*0.73}vw`
+            Player1_Score.innerHTML = `${Player1_Count}`
+            back_P1();
+            }
+        }, 200);
+}
+
+const back_P2= () => {
+    TimeoutP2 = setTimeout(() => {
+        if (Player2_Count > 0){
+            Player2_Count -= 1
+            Player2_Car.style.width = `${Player2_Count*0.73}vw`
+            Player2_Score.innerHTML = `${Player2_Count}`
+            back_P2();
+        }
+    }, 200);
+}
