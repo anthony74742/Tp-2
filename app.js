@@ -107,7 +107,7 @@ const reset = () =>{
 
 const back_P1= () => {
         TimeoutP1 = setTimeout(() => {
-            if (Player2_Count > 0){
+            if (Player1_Count > 0){
             Player1_Count -= 1
             Player1_Car.style.width = `${Player1_Count*0.73}vw`
             Player1_Score.innerHTML = `${Player1_Count}`
