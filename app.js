@@ -9,7 +9,6 @@ let T2;
 let TimeoutP1;
 let TimeoutP2;
 
-
 let Player1_Count = 0
 let Player2_Count = 0
 
@@ -111,6 +110,7 @@ const back_P1= () => {
             Player1_Count -= 1
             Player1_Car.style.width = `${Player1_Count*0.73}vw`
             Player1_Score.innerHTML = `${Player1_Count}`
+            Player1_Car.style.backgroundColor = `${ChangeColor(Player1_Count)}`
             back_P1();
             }
         }, 200);
@@ -122,6 +122,7 @@ const back_P2= () => {
             Player2_Count -= 1
             Player2_Car.style.width = `${Player2_Count*0.73}vw`
             Player2_Score.innerHTML = `${Player2_Count}`
+            Player2_Car.style.backgroundColor = `${ChangeColor(Player2_Count)}`
             back_P2();
         }
     }, 200);

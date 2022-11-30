@@ -46,13 +46,18 @@
     margin: auto;
 }
 
+.press{
+    font-size: 2rem;
+    color: white;
+}
+
 .jauge_max{
     display: flex;
     flex-direction: row;
     z-index: 3;
     height: 100%;
     width: 80%;
-    background-image: url(Road.png);
+    background-image: url(Image/Road.png);
     background-size: contain;
     background-position: left;
     align-items: center;
@@ -76,7 +81,7 @@
     position: absolute;
     height: 10vh;
     width: 10vh;
-    background-image:url(F1_chequered_flag.svg.png) ;
+    background-image:url(Image/F1_chequered_flag.svg.png) ;
     background-size: cover;
     z-index: 0;
     right: 0px;
